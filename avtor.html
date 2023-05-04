@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+	<link rel="stylesheet" href="style5.css">
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+</head>
+
+<body>
+	
+	<header>
+		<div class="container">
+		  <div id="branding">
+			<h1><span class="highlight">Coruna </span>  Branding  </h1>
+		  </div>
+		  <nav>
+			<ul>
+			  <li><a href="index.html">Главная</a></li>
+			  <li><a href="about.html">о Нaс</a></li>
+			  <li><a href="services.html">Услуги</a></li>
+			  <li class="current"><a href="avtor.html">регистрация</a></li>
+			</ul>
+		  </nav>
+		</div>
+	  </header>
+
+</body>
+<body>
+
+<div class="container" id="container">
+	<div class="form-container sign-up-container">
+		<form action="#">
+			<h2>Создать аккаунт с помощью
+			</h2>
+			
+			<div class="social-container">
+				<img src="photo.png" alt="Bootstrap" width="32" height="32">
+				<img src="6256e0f045dc3c2939d3d97d3a233379.png" alt="Bootstrap" width="40" height="32">
+				<img src="google.png" alt="Bootstrap" width="25" height="28">
+			</div>
+			<span>или используйте электронную почту для регистрации</span>
+			<input type="text" placeholder="Логин" />
+			<input type="email" placeholder="Email" />
+			<input type="password" placeholder="Пароль" />
+			<button>Зарегистрироваться</button>
+		</form>
+	</div>
+	<div class="form-container sign-in-container">
+		<form action="#">
+			<h1>Авторизация</h1>
+			<div class="social-container">
+				<img src="photo.png" alt="Bootstrap" width="32" height="32">
+				<img src="6256e0f045dc3c2939d3d97d3a233379.png" alt="Bootstrap" width="40" height="32">
+				<img src="google.png" alt="Bootstrap" width="27" height="28">
+			</div>
+			<span>Войти с помощью</span>
+			<input type="email" placeholder="Email" />
+			<input type="password" placeholder="Пароль" />
+			<a href="#">Забыли пароль</a>
+			<button>Войти</button>
+		</form>
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-left">
+				<h1>Добро пожаловать!</h1>
+				<p>Чтобы оставаться на связи с нами, пожалуйста, войдите под своим профилем</p>
+				<button class="ghost" id="signIn">Войти</button>
+			</div>
+			<div class="overlay-panel overlay-right">
+				<h1>Добро пожаловать!
+				</h1>
+				<p>Введите свои личные данные и начните путешествие с нами</p>
+				<button class="ghost" id="signUp">Зарегистрироваться</button>
+			</div>
+		</div>
+	</div>
+</div>
+<script>const signUpButton = document.getElementById('signUp');
+        const signInButton = document.getElementById('signIn');
+        const container = document.getElementById('container');
+        
+        signUpButton.addEventListener('click', () => {
+            container.classList.add("right-panel-active");
+        });
+        
+        signInButton.addEventListener('click', () => {
+            container.classList.remove("right-panel-active");
+        });</script>
+
+
+</body>
+
+</html>
+

@@ -1,0 +1,286 @@
+.ccc{
+    background-color: #e8491d;
+    width: 100%;
+    position: relative;
+    height: 1170px;
+    background-color: #e6e6e6;
+     border: #cccccc solid 1px;
+     text-align: center;
+     padding-top: 2%;
+     color: #e8491d;
+  }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+ }
+ .portfolio-wrap {
+   position: relative;
+   top: 3%;
+    max-width: 1405px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    
+ }
+ .portfolio-item {
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+ }
+ .portfolio-item a {
+    display: block;
+    text-decoration: none;
+    color: white;
+ }
+ .portfolio-item-wrap {
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .2);
+    background: black;
+    color: white;
+ }
+ .portfolio-item img {
+    display: block;
+    width: 100%;
+    opacity: .75;
+    transition: .5s ease-in-out;
+ }
+ .portfolio-item-inner {
+    position: absolute;
+    top: 45%;
+    left: 7%;
+    right: 7%;
+    bottom: 45%;
+    border: 1px solid white;
+    border-width: 0 1px 1px;
+    transition: .4s ease-in-out;
+ }
+ .portfolio-heading {
+    overflow: hidden;
+    transform: translateY(-50%);
+ }
+ .portfolio-heading h3 {
+    font-family: 'Pattaya', sans-serif;
+    font-weight: normal;
+    display: table;
+    margin: 0 auto;
+    padding: 0 10px;
+    position: relative;
+ }
+ .portfolio-heading h3:before, .portfolio-heading h3:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 50px;
+    height: 1px;
+    background: white;
+ }
+ .portfolio-heading h3:before {
+    left: -50px;
+ }
+ .portfolio-heading h3:after {
+    right: -50px;
+ }
+ .portfolio-item-inner ul {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    transform: translateY(-50%);
+    padding: 0 20px;
+    opacity: 0;
+    list-style: none;
+    font-family: 'Raleway', sans-serif;
+    transition: .4s ease-in-out;
+ }
+ .portfolio-item-inner li {
+    position: relative;
+    font-size: 12px;
+    padding: 10px 0;
+    margin-bottom: 4px;
+ }
+ .portfolio-item-inner li:after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    margin-left: -2px;
+    bottom: -4px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 10px 0 0 white, -10px 0 0 white;
+ }
+ .portfolio-item-inner li:last-child:after {
+    content: none;
+ }
+ .portfolio-item:hover img {
+    opacity: 0.45;
+    transform: scale(1.1);
+ }
+ .portfolio-item:hover .portfolio-item-inner {
+    top: 7%;
+    bottom: 7%;
+ }
+ .portfolio-item:hover ul {
+    opacity: 1;
+    transition-delay: .5s;
+ }
+
+
+ 
+
+
+
+
+ 
+ .containerr {
+    width: 100%;
+    max-width: 1000px;
+    padding: 0 20px;
+  }
+  
+  /* Стили самой формы */
+  .content {
+    display: flex; /* делаем колонки в ряд */
+    align-items: center; /* выравниваем по центру */
+    justify-content: space-between; /* колонки растянутся на всю ширину */
+    background: #fff;
+    padding: 40px;
+    border-radius: 5px;
+    box-shadow: 4px 4px 8px 0 rgba(34, 60, 80, 0.2);
+  }
+  
+  /* Стили левой колонки */
+  .left-side {
+    width: 25%; /* занимает 25% общей ширины */
+    height: 100%; /* растягиваем на всю высоту */
+    position: relative; /* позиционирование относительное (для ::before) */
+    display: flex;
+    flex-direction: column; /* внутри элементы располагаем в колонку */
+  }
+  
+  /* Стили разделительной линии между левой и правой колонкой */
+  .left-side::before {
+    content: ""; /* контент нам не нужен */
+    position: absolute; /* позиционируем относительно .left-side */
+    height: 70%; /* высота 70% от .left-side */
+    width: 2px; /* ширина 2px */
+    background: #afafb6;
+    right: -15px; /* позиционируем справа + отступ 15px (справа) */
+    top: 50%; /* выравниваем по центру */
+    transform: translateY(-50%); /* выравниваем по центру */
+  }
+  
+  /* Стили правой колонки */
+  .right-side {
+    width: 75%; /* занимает 75% общей ширины */
+    margin-left: 75px;
+  }
+  
+  /* Элементы левой колонки: адрес, телефон, email */
+  .details {
+    margin-bottom: 15px;
+    text-align: center;
+  }
+  
+  /* Общие стили для иконок */
+  .details i {
+    font-size: 25px; /* задаем размер */
+    color: #e8491d; /* задаем цвет */
+    margin-bottom: 10px;
+  }
+  
+  /* Стили для заголовков левой колонки */
+  .topic {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 7px; /* отступ снизу 7px */
+  }
+  
+  /* Стили для текста левой колонки */
+  .text-one,
+  .text-two,
+  .text-three {
+    font-size: 14px;
+    color: #afafb6;
+  }
+  
+  /* Заголовок правой колонки */
+  .topic-text {
+    font-size: 23px;
+    font-weight: 600;
+    color: #e8491d;
+    margin-bottom: 10px;
+  }
+  
+  /* Текст правой колонки */
+  .right-side p {
+    margin-bottom: 20px;
+  }
+  
+  /* Контейнер для input'ов формы */
+  .input-box {
+    height: 50px; /* по сути задаем высоту input'а */
+    width: 100%; /* ширина на всю ширину правой колонки (с учетом padding) */
+    margin-bottom: 20px; /* отступаем снизу 20px */
+  }
+  
+  /* Стили для input и textarea (поле сообщение) */
+  .input-box input,
+  .input-box textarea {
+    height: 100%; /* растягиваем на всю высоту контейнера 50px */
+    width: 100%; /* растягиваем на всю ширину */
+    border: none; /* убираем внешние края */
+    border-radius: 5px; /* скругляем края */
+    background: #f0f1f8; /* задаем цвет фона */
+    padding: 0 20px; /* отступ справа и слева 20px */
+  }
+  
+  /* Отдельно стилизуем поле сообщение */
+  .input-box textarea {
+    resize: none; /* чтобы нельзя было менять высоту */
+    padding: 20px;
+    font-family: "Roboto", sans-serif;
+  }
+  
+  /* Это контейнер для поля сообщение */
+  .message-box {
+    min-height: 110px; /* минимальная высота 110px */
+  }
+  
+  /* Стили для контейнера кнопки */
+  .button {
+    display: inline-block; /* делаем блочно-строчный элемент */
+  }
+  
+  /* Стили для самой кнопки */
+  .button input[type="button"] {
+    color: #fff;
+    font-size: 18px;
+    background: #e8491d;
+    outline: none;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 7px;
+    transition: 0.2s; /* чтобы плавно менялся цвет при наведении (:hover) */
+  }
+  
+  /* Меняем цвет фона при наведении на кнопку */
+  .button input[type="button"]:hover {
+    background: #aa4023;
+  }
+ @media (min-width: 530px) {
+    .portfolio-item {
+       flex-basis: 50%;
+       flex-shrink: 0;
+    }
+ }
+ @media (min-width: 768px) {
+    .portfolio-item {
+       flex-basis: 33.333333333%;
+    }
+ }

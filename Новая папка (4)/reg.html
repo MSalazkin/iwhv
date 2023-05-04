@@ -1,0 +1,214 @@
+<?php 
+    include "php/database/db.php";
+
+    $errMsg = '';
+    $errMsg1 = '';
+    $metchMsg = '';
+    $loginMoreMsg= '';
+    $alreadyMsg= '';
+    $errAvtorizMsg = '';
+
+    $users = selectALL('users');
+
+    //Код для формы регистрации
+    if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['button-reg'])){
+        $full_name = trim($_POST['full_name']);
+        $login = trim($_POST['login']);
+        $email = trim($_POST['email']);
+        $telefon = trim($_POST['telefon']);
+        $password = trim($_POST['password']);
+        $password_confirm = trim($_POST['password_confirm']);
+        $admin = 0;
+        
+        if($full_name === '' || $login === '' || $email === '' || $telefon === '' || $password === ''){
+            $errMsg = "Поле должно быть заполнено!";
+        }elseif (mb_strlen($login, 'UTF8') < 2){
+            $loginMoreMsg = "Логин должен быть более 2 символов!";
+        }elseif($password !== $password_confirm){
+            $metchMsg = "Пароли должны совпадать!";
+        }else{
+            $existence = selectOne('users', ['email' => $email]);
+            if($existence['email'] === $email){
+                $alreadyMsg = "Этот адрес электронной почты уже используется.";
+            }else{
+                $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+                $post = [
+                    'full_name' => $full_name,
+                    'login' => $login,
+                    'email' => $email,
+                    'telefon' => $telefon,
+                    'password' => $password,
+                    'admin' => $admin
+                ];
+                $id = insert('users', $post);
+                // $errMsg = "Пользователь $login успешно зарегистрирован!";
+                $user = selectOne('users', ['id' => $id]);
+
+                $_SESSION['id'] = $user['id'];
+                $_SESSION['full_name'] = $user['full_name'];
+                $_SESSION['login'] = $user['login'];
+                $_SESSION['email'] = $user['email'];
+                $_SESSION['telefon'] = $user['telefon'];
+                $_SESSION['admin'] = $user['admin'];
+                if($_SESSION['admin']){
+                    header('Location: admin/Admin.php');
+                }else{
+                    header('Location: profil.php');
+                }
+            }
+        }
+
+        // $last_row = selectOne('users', ['id' => $id]);
+    }else{
+        $full_name = '';
+        $login = '';
+        $email = '';
+        $telefon = '';
+    }
+
+    //Код для формы авторизации
+    if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['button-log'])){
+
+        $email = trim($_POST['email']);
+        $password = trim($_POST['password']);
+
+        if($email === '' || $password === ''){
+            $errMsg1 = "Поле должно быть заполнено!";
+        }else{
+            $existence = selectOne('users', ['email' => $email]);
+            if ($existence && password_verify($password, $existence['password'])){
+                $_SESSION['id'] = $existence['id'];
+                $_SESSION['full_name'] = $existence['full_name'];
+                $_SESSION['login'] = $existence['login'];
+                $_SESSION['admin'] = $existence['admin'];
+                $_SESSION['email'] = $existence['email'];
+                $_SESSION['telefon'] = $existence['telefon'];
+                if($_SESSION['admin']){
+                    header('Location: Admin.php');
+                }else{
+                    header('Location: profil.php');
+                }
+            }else{
+                $errAvtorizMsg = "Почта либо пароль введены неверно!";
+            }
+        }
+    }else{
+        $email= '';
+    }
+
+    //Код добавления пользователя в админке
+    if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['create-user'])){
+
+        $full_name = trim($_POST['full_name']);
+        $login = trim($_POST['login']);
+        $email = trim($_POST['email']);
+        $telefon = trim($_POST['telefon']);
+        $password = trim($_POST['password']);
+        $password_confirm = trim($_POST['password_confirm']);
+        $admin = 0;
+        
+        if($full_name === '' || $login === '' || $email === '' || $telefon === '' || $password === ''){
+            $errMsg = "Поле должно быть заполнено!";
+        }elseif (mb_strlen($login, 'UTF8') < 2){
+            $loginMoreMsg = "Логин должен быть более 2 символов!";
+        }elseif($password !== $password_confirm){
+            $metchMsg = "Пароли должны совпадать!";
+        }else{
+            $existence = selectOne('users', ['email' => $email]);
+            if($existence['email'] === $email){
+                $alreadyMsg = "Этот адрес электронной почты уже используется.";
+            }else{
+                $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+                if (isset($_POST['admin'])) $admin = 1; 
+                $user = [
+                    'full_name' => $full_name,
+                    'login' => $login,
+                    'email' => $email,
+                    'telefon' => $telefon,
+                    'password' => $password,
+                    'admin' => $admin
+                ];
+                $id = insert('users', $user);
+                $user = selectOne('users', ['id' => $id]);
+
+                $_SESSION['id'] = $user['id'];
+                $_SESSION['full_name'] = $user['full_name'];
+                $_SESSION['login'] = $user['login'];
+                $_SESSION['email'] = $user['email'];
+                $_SESSION['telefon'] = $user['telefon'];
+                $_SESSION['admin'] = $user['admin'];
+                if($_SESSION['admin']){
+                    header('Location: Admin.php');
+                }else{
+                    header('Location: index.html');
+                }
+            }
+        }
+
+        // $last_row = selectOne('users', ['id' => $id]);
+    }else{
+        $full_name = '';
+        $login = '';
+        $email = '';
+        $telefon = '';
+    }
+
+    //Код удаления пользователя в админке
+    if($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['delete_id'])){
+        $id = $_GET['delete_id'];
+        delete('users', $id);
+        header('Location: Admin.php');
+    }
+
+    // Редакирование пользователя через админку
+    if($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['edit_id'])){
+        $user = selectOne('users', ['id' => $_GET['edit_id']]);
+
+        $id =  $user['id'];
+        $admin =  $user['admin'];
+        $full_name = $user['full_name'];
+        $login = $user['login'];
+        $email = $user['email'];
+        $telefon = $user['telefon'];
+    }
+
+    if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update-user'])){
+
+        $id = $_POST['id'];
+        $full_name = trim($_POST['full_name']);
+        $login = trim($_POST['login']);
+        $email = trim($_POST['email']);
+        $telefon = trim($_POST['telefon']);
+        $password = trim($_POST['password']);
+        $password_confirm = trim($_POST['password_confirm']);
+        $admin = isset($_POST['admin']) ? 1 : 0;
+
+        if($login === ''){
+            $errMsg = "Поле должно быть заполнено!";
+        }elseif (mb_strlen($login, 'UTF8') < 2){
+            $loginMoreMsg = "Логин должен быть более 2 символов!";
+        }elseif ($password !== $password_confirm) {
+            $metchMsg = "Пароли должны совпадать!";
+        }else{
+            $password = password_hash($password, PASSWORD_DEFAULT);
+            if (isset($_POST['admin'])) $admin = 1;
+            $user = [
+                'admin' => $admin,
+                'full_name' => $full_name,
+                'login' => $login,
+                'telefon' => $telefon,
+                'password' => $password
+            ];
+
+            $user = update('users', $id, $user);
+            header('location: Admin.php');
+        }
+    }else{
+        $id =  $user['id'];
+        $admin =  $user['admin'];
+        $full_name = $user['full_name'];
+        $login = $user['login'];
+        $email = $user['email'];
+        $telefon = $user['telefon'];
+    }
+?>

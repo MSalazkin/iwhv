@@ -1,0 +1,95 @@
+/* ----------------------------------------------------------------
+	Dark Scheme
+-----------------------------------------------------------------*/
+
+
+.dark,
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6 { color: #EEE; }
+
+.dark a:hover { color: #EEE; }
+
+.dark #header.semi-transparent,
+.dark #header.semi-transparent.floating-header .container,
+#header.dark.semi-transparent,
+#header.dark.semi-transparent.floating-header .container { background-color: rgba(0,0,0,0.6); }
+
+.dark #header.sticky-header.semi-transparent,
+.dark #header.semi-transparent.floating-header,
+.dark #header.semi-transparent.floating-header.sticky-header .container,
+#header.dark.sticky-header.semi-transparent,
+#header.dark.semi-transparent.floating-header,
+#header.dark.semi-transparent.floating-header.sticky-header .container { background-color: transparent; }
+
+.dark #header.semi-transparent.sticky-header #header-wrap,
+#header.dark.semi-transparent.sticky-header #header-wrap { background-color: rgba(0,0,0,0.6); }
+
+.dark #logo a { color: #FFF; }
+
+.dark #header.full-header #header-wrap:not(.not-dark) #logo,
+#header.full-header.dark #header-wrap:not(.not-dark) #logo { border-right-color: rgba(255,255,255,0.15); }
+
+.dark #header.transparent-header.full-header:not(.sticky-header) #header-wrap:not(.not-dark) #logo,
+#header.transparent-header.full-header.dark:not(.sticky-header) #header-wrap:not(.not-dark) #logo { border-right-color: rgba(255,255,255,0.2); }
+
+
+.dark #header-wrap:not(.not-dark) #primary-menu > ul > li > a,
+.dark #header-wrap:not(.not-dark) #primary-menu > .container > ul > li > a,
+.dark.overlay-menu #header-wrap:not(.not-dark) #primary-menu > ul > li > a,
+.overlay-menu #primary-menu.dark > ul > li > a,
+.dark.overlay-menu #header-wrap:not(.not-dark) #primary-menu > #overlay-menu-close,
+.overlay-menu #primary-menu.dark > #overlay-menu-close,
+.dark #header-wrap:not(.not-dark) #top-search a,
+.dark #header-wrap:not(.not-dark) #top-cart a,
+.dark #header-wrap:not(.not-dark) #side-panel-trigger a,
+.dark #header-wrap:not(.not-dark) #top-account a,
+.dark #top-cart .top-cart-item-desc a,
+body.top-search-open .dark #header-wrap:not(.not-dark) #top-search a,
+.dark #header-wrap:not(.not-dark) #top-search a:hover,
+.dark #header-wrap:not(.not-dark) #top-cart a:hover,
+.dark #header-wrap:not(.not-dark) #side-panel-trigger a:hover,
+.dark #header-wrap:not(.not-dark) #top-account a:hover,
+.dark #header-wrap:not(.not-dark) #top-search form input {
+	color: #EEE;
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+}
+
+.dark #header.full-header #header-wrap:not(.not-dark) #primary-menu > ul,
+#header.full-header.dark #header-wrap:not(.not-dark) #primary-menu > ul { border-right-color: rgba(255,255,255,0.15); }
+
+
+
+
+.dark #primary-menu.style-3:not(.not-dark) > ul > li:hover > a,
+#primary-menu.dark.style-3 > ul > li:hover > a {
+	color: #EEE;
+	background-color: rgba(255,255,255,0.05);
+}
+
+
+
+
+
+
+#footer.dark,
+.dark #footer {
+	background-color: #ccc;
+	color:rgba(255,255,255,0.25);
+	border-top-color: rgba(0,0,0,0.1);
+}
+
+.dark #copyrights {
+	background-color:#1e1e1e;
+	color: rgba(255,255,255,0.25);
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+}
+
+
+
+
+
+
